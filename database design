@@ -1,0 +1,31 @@
+customer		customer id (hidden/pk)
+			customer username
+			customer password
+			customer mail
+
+comments		item id (hidden/pk/fk)
+(may not be		customer id (hidden/pk/fk)
+implemented)		comment stars
+			comment content
+
+staff/admin		staff id (hidden/pk)
+			staff username
+			staff password
+			staff name
+			staff phone
+			staff email
+
+product category	category id (hidden/pk)
+			category name
+
+product display		item id (hidden/pk)
+			category id (hidden/fk)
+			item name
+			item price
+			itemImage
+
+cart			cart id (hidden/pk)
+			item id (hidden/pk/fk)
+			customerid(hidden/fk)
+			item ammounts
+			total price
