@@ -16,4 +16,4 @@ staffPassword varchar(30) not null,
 stafName varchar(40) not null,
 staffPhone int(10),
 staffEmail varchar(40)
-)
+);
