@@ -8,7 +8,7 @@ customerUsername varchar(30) not null,
 customerPassword varchar(30) not null,
 customerMail varchar(40)
 );
-create table staff
+create table staffs
 (
 staffID smallint not null primary key,
 staffUsername varchar(30) not null,
