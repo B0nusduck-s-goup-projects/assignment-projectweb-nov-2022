@@ -3,7 +3,7 @@ use computershop;
 
 create table customers
 (
-customerID int not null primary key,
+customerID int not null auto-increment primary key,
 customerUsername varchar(30) not null,
 customerPassword varchar(30) not null,
 customerMail varchar(40)
