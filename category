@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Category;
+
+class CategoryController extends Controller
+{
+    public function index(){
+        $data = category::get();
+        return view('categories/category-index-backend',compact('data'));
+    }
+
+    public function add(){
+        return view('categories/category-add-backend');
+    }
+
+    public function save(Request $request){
+        $request -> validate([
+            'categoryID'=>'required|unique:categories',
+            'categoryName'=>'required'
+        ]);
+
+        $category = new category();
+        $category->categoryID = $request->categoryID;
+        $category->categoryName = $request->categoryName;
+        $category->save();
+        
+        return redirect()->back()->with('success','category added successfully!');
+    }
+
+    public function edit($categoryID){
+        $category = category::where('categoryID','=',$categoryID)->first();
+        return view('categories/category-edit-backend',compact('category'));
+    }
+
+    public function update(Request $request){
+        $request -> validate([
+            'categoryName'=>'required'
+        ]);
+
+        $categoryID = $request->categoryID;
+        category::where('categoryID','=',$categoryID)->update([
+            'categoryName' => $request->categoryName,
+        ]);
+        return redirect()->back()->with('success','product updated successfully!');
+    }
+
+    public function delete($categoryID){
+            //note: this function cannot delete row that has been connected to other tables
+            category::where('categoryID','=',$categoryID)->delete();
+            return redirect()->back()->with('success','product deleted successfully!');
+    }
+}
