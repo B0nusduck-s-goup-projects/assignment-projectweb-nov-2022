@@ -137,7 +137,14 @@ class CustomerController extends Controller
     }
     //from customer index
     public function deleteI($customerID){
-        Customer::where('customerID','=',$customerID)->delete();
-        return redirect()->back()->with('success','account deleted succesfully!');
+        $login = session::get('customerLogin');
+        if( $login == $customerID){
+            Customer::where('customerID','=',$customerID)->delete();
+            return redirect('customer/logout');
+        }
+        else{
+            staff::where('customerID','=',$customerID)->delete();
+            return redirect()->back()->with('success','account deleted successfully!');
+        }
     }
 }
