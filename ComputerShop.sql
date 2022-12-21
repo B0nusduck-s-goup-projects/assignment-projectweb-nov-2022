@@ -31,6 +31,27 @@ productPrice double(15,3),
 productImage varchar(30),
 constraint FK_Cat_Pro foreign key (categoryID) references Categories(categoryID)
 );
+create table comments
+(
+productID mediumint not null,
+customerID int not null,
+commentStars int(5),
+commentContent varchar(500),
+constraint PK_Comm primary key (productID,customerID),
+constraint FK_Pro_Comm foreign key (productID) references products(productID),
+constraint FK_Cus_Comm foreign key (customerID) references customers(customerID)
+);
+create table carts
+(
+cartID int not null,
+productID mediumint not null,
+customerID int not null,
+productAmmount int,
+totalprice float(15,3),
+constraint PK_Comm primary key (cartID,productID),
+constraint FK_Pro_Carts foreign key (productID) references products(productID),
+constraint FK_Cus_Carts foreign key (customerID) references customers(customerID)
+);
 
 --insert data
 
