@@ -28,6 +28,9 @@ Route::get('/connection',function( ){
     }
 });
 //home
+Route::get('/', function () {
+    return redirect('home');
+});
 Route::get('home',[HomeController::class,'home']);
 Route::get('home/index',[HomeController::class,'index']);
 Route::get('home/collection/{categoryName}',[HomeController::class,'collection']);
